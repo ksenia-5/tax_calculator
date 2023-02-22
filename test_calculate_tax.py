@@ -19,6 +19,8 @@ def test_lbtt_band_4():
 
 def test_lbtt_band_5():
     assert calculate_tax(3700000, bands, rates) == (402350, 0)
+
+
 # England rates
 # bands = [250000, 925000,1500000]
 # rates = [0.05, 0.1, 0.12]

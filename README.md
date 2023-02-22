@@ -12,3 +12,7 @@ pip install pytest
 <br>
 
 pytest
+
+<br>
+
+pytest -v
