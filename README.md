@@ -1,4 +1,7 @@
-# Start
+# Function and unit tests to calculate land and building transaction tax (LBTT) on property purchase in Scotland.
+Tax is calculated within different tax bands depending based on purchase price and buyer data.
+
+
 
 In the terminal run:
 
