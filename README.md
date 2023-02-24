@@ -1,5 +1,7 @@
-# Function and unit tests to calculate land and building transaction tax (LBTT) on property purchase in Scotland.
-Tax is calculated within different tax bands depending based on purchase price and buyer data.
+# Tax Calculator
+
+Functions and unit tests to calculate land and building transaction tax (LBTT) on property purchase in Scotland.
+Tax is calculated within different tax bands depending on purchase price, intended use (residential vs non-residential) and buyer data, such as whether they are buying an additional dwelling (ADS) or qualify for first-time buyer relief.
 
 
 
