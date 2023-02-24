@@ -7,23 +7,37 @@ The function can process a different number of bands, looping through bands
 to calculate tax payble at different rates for each band.
 '''
 
-residential_band_rates = {
-    'bands' : [145000,250000,325000,750000],
-    'rates' : [0.02, 0.05, 0.1, 0.12],
-    'first_time_relief' : 175000,
-    }
+import pandas as pd
+
+# residential_band_rates = {
+#     'bands' : [145000,250000,325000,750000],
+#     'rates' : [0.02, 0.05, 0.1, 0.12],
+#     'first_time_relief' : 175000,
+#     }
+
+# Read in some tax authority data from external csv file
+
+
+fpath = "/Users/ksenia/Desktop/github/BJSS/tax_calculator/calculate_tax/data.csv"
+data = pd.read_csv(fpath)
+data['bands'] = data['bands'].astype('int')
+data['rates'] = data['rates'].astype('float')
+data['first_time_relief'] = data['first_time_relief'].astype('int')
+residential_band_rates = data.to_dict(orient= 'list')
+residential_band_rates['first_time_relief'] = residential_band_rates['first_time_relief'][0]
+# print(data)
+# print(residential_band_rates)
 
 non_residential_band_rates = {
-    'bands' : [15000,250000],
-    'rates' : [0.0, 0.05],
-    'first_time_relief' : 175000,
-    'ads_band' : {'threshold' : 40000, 'rate' : 0.06}
-    }
+    'bands' : [150000,250000],
+    'rates' : [0.01, 0.05],
+    'first_time_relief' : 0,
+}
 
 
 ads_band_rate = {
     'threshold' : 40000, 'rate' : 0.06
-    }
+}
 
 
 def calculate_lbtt(price, first_time_buyer = False, band_rates = residential_band_rates):

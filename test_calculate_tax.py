@@ -1,5 +1,6 @@
 import pytest
 from calculate_tax.calculate_tax import calculate_tax, calculate_ads, calculate_lbtt
+from calculate_tax.calculate_tax import residential_band_rates, non_residential_band_rates, ads_band_rate
 
 # Scotland rates
 # bands = [145000,250000,325000,750000]
@@ -56,8 +57,23 @@ def test_calculate_tax_band_3_ads():
 def test_calculate_tax_first_time_band_0():
     assert calculate_tax(175000, first_time_buyer = True, additional_dwelling = False) == 0
 
+def test_calculate_tax_first_time_band_1():
+    assert calculate_tax(195000, first_time_buyer = True, additional_dwelling = False) == 400 
+
 def test_calculate_tax_first_time_band_2():
     assert calculate_tax(312000, first_time_buyer = True, additional_dwelling = False) == 4600
 
 def test_calculate_tax_first_time_band_3():
     assert calculate_tax(800000, first_time_buyer = True, additional_dwelling = False) == 53750
+
+
+# Non-residential property
+
+def test_calculate_non_residential_band_0():
+    assert calculate_tax(140000, first_time_buyer = False, additional_dwelling = False, band_rates = non_residential_band_rates, ads_rate = ads_band_rate) == 0
+
+def test_calculate_non_residential_band_1():
+    assert calculate_tax(205000, first_time_buyer = False, additional_dwelling = False, band_rates = non_residential_band_rates, ads_rate = ads_band_rate) == 550
+
+def test_calculate_non_residential_band_2():
+    assert calculate_tax(700000, first_time_buyer = False, additional_dwelling = False, band_rates = non_residential_band_rates, ads_rate = ads_band_rate) == 23500
